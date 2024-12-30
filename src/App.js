@@ -38,7 +38,7 @@ function App() {
         <button onClick={showCartModal} className='cursor-pointer'>Cart ({items.length})</button>
       </div>
       {showCart && (
-        <div className='absolute top-14 right-10  shadow-md z-[50] py-4 bg-white rounded-md'>
+        <div className='absolute top-14 right-10  shadow-md z-[50] py-4 bg-white rounded-md h-96 overflow-scroll overflow-x-auto'>
           {items.map((item) => (
             <>
               <div className='flex flex-col gap-4'>
@@ -56,7 +56,7 @@ function App() {
                         <button onClick={() => dispatch(incrementQuantity(item))}>+</button>
                       </div>
                       <div className='font-bold text-xl'>
-                        ${item.quantity * item.price || item.price}
+                        ${item.quantity * item.price.toFixed(2) || item.price.toFixed(2)}
                       </div>
                     </div>
                   </div>
@@ -66,7 +66,7 @@ function App() {
           ))
         }
         <div className='text-xl font-bold text-end pr-4 mt-4 border-t border-black'>
-        Total : ${items.reduce((acc, curr) => acc + curr.quantity * curr.price, 0)}
+        Total : ${items.reduce((acc, curr) => acc + curr.quantity * curr.price, 0).toFixed(2)}
         </div>
         </div>
       )}
