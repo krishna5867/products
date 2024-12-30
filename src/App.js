@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { useSelector } from 'react-redux';
-import { addItemToCart, removeItemFromCart, fetchProducts } from './component/CartSlice';
+import { addItemToCart,incrementQuantity, decrementQuantity, removeItemFromCart, fetchProducts } from './component/CartSlice';
 import { useDispatch } from 'react-redux';
 
 function App() {
@@ -50,12 +50,12 @@ function App() {
                   </div>
                   <div className='flex justify-between'>
                     <div>
-                      <button>-</button>
+                      <button onClick={()=> dispatch(decrementQuantity(item))}>-</button>
                       <span className='mx-4'>{item.quantity || 1}</span>
-                      <button>+</button>
+                      <button onClick={()=> dispatch(incrementQuantity(item))}>+</button>
                     </div>
                     <div className='font-bold text-xl'>
-                      ${item.price}
+                      ${item.quantity * item.price || item.price}
                     </div>
                   </div>
                 </div>
