@@ -8,7 +8,7 @@ function App() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.auth);
   const { isLoading, isError, products, items } = useSelector((state) => state.cart);
-  const [showCart, setShowCart] = useState(true);
+  const [showCart, setShowCart] = useState(false);
 
 
   useEffect(() => {
