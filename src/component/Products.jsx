@@ -27,7 +27,7 @@ function Products() {
         dispatch(removeItemFromCart(id));
     }
 
-    if (isLoading) return <h2 className='absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] '>Kya dekh rha hai bay...</h2>
+    if (isLoading) return <h2 className='absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] '>Loading...</h2>
     if (isError) return <h2 className='absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]'>{isError}</h2>
 
     return (
