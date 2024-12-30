@@ -35,7 +35,7 @@ function App() {
     <div className='relative bg-gray-200'>
       <div className="flex justify-between p-4 max-w-7xl mx-auto relative">
         <div className='text-xl font-bold'>Krishna</div>
-        <button onClick={showCartModal} className='cursor-pointer'>Cart</button>
+        <button onClick={showCartModal} className='cursor-pointer'>Cart ({items.length})</button>
       </div>
       {showCart && (
         <div className='absolute top-14 right-10  shadow-md z-[50] py-4 bg-white rounded-md'>
