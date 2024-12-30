@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { useSelector } from 'react-redux';
-import { addItemToCart,incrementQuantity, decrementQuantity, removeItemFromCart, fetchProducts } from './component/CartSlice';
+import { addItemToCart, incrementQuantity, decrementQuantity, removeItemFromCart, fetchProducts } from './component/CartSlice';
 import { useDispatch } from 'react-redux';
 
 function App() {
@@ -24,11 +24,11 @@ function App() {
   const handleAddToCart = (item) => {
     dispatch(addItemToCart(item));
   }
-  const handleRemove = (id)=> {
+  const handleRemove = (id) => {
     dispatch(removeItemFromCart(id));
   }
 
-  if (isLoading) return <h2 className='absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] '>Loading...</h2>
+  if (isLoading) return <h2 className='absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] '>Kya dekh rha hai bay...</h2>
   if (isError) return <h2 className='absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]'>{isError}</h2>
 
   return (
@@ -40,28 +40,34 @@ function App() {
       {showCart && (
         <div className='absolute top-14 right-10  shadow-md z-[50] py-4 bg-white rounded-md'>
           {items.map((item) => (
-            <div className='flex flex-col gap-4'>
-              <div className='flex gap-2 m-4' key={item.id}>
-                <img src={item.image} alt="product" className='h-20' />
-                <div className='w-full'>
-                  <div className='flex justify-between'>
-                    <h2 className='p-2 font-semibold'>{item.title}</h2>
-                    <span className='p-2 shadow-md w-10 h-10 rounded-full flex justify-center items-center' onClick={() => handleRemove(item)}>X</span>
-                  </div>
-                  <div className='flex justify-between'>
-                    <div>
-                      <button onClick={()=> dispatch(decrementQuantity(item))}>-</button>
-                      <span className='mx-4'>{item.quantity || 1}</span>
-                      <button onClick={()=> dispatch(incrementQuantity(item))}>+</button>
+            <>
+              <div className='flex flex-col gap-4'>
+                <div className='flex gap-2 m-4' key={item.id}>
+                  <img src={item.image} alt="product" className='h-20' />
+                  <div className='w-full'>
+                    <div className='flex justify-between'>
+                      <h2 className='p-2 font-semibold'>{item.title}</h2>
+                      <span className='p-2 shadow-md w-10 h-10 rounded-full flex justify-center items-center' onClick={() => handleRemove(item)}>X</span>
                     </div>
-                    <div className='font-bold text-xl'>
-                      ${item.quantity * item.price || item.price}
+                    <div className='flex justify-between'>
+                      <div>
+                        <button onClick={() => dispatch(decrementQuantity(item))}>-</button>
+                        <span className='mx-4'>{item.quantity || 1}</span>
+                        <button onClick={() => dispatch(incrementQuantity(item))}>+</button>
+                      </div>
+                      <div className='font-bold text-xl'>
+                        ${item.quantity * item.price || item.price}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            </>
+          ))
+        }
+        <div className='text-xl font-bold text-end pr-4 mt-4 border-t border-black'>
+        Total : ${items.reduce((acc, curr) => acc + curr.quantity * curr.price, 0)}
+        </div>
         </div>
       )}
       {user && user.name}
