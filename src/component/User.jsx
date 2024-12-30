@@ -1,7 +1,7 @@
 import React from 'react'
-import useFetch from './useFetch'
+import useFetch from './hooks/useFetch'
 
-const Sum = () => {
+const User = () => {
     const url = 'https://jsonplaceholder.typicode.com/users'
     const { data, loading, error } = useFetch(url)
 
@@ -25,7 +25,5 @@ const Sum = () => {
     )
 }
 
-export default Sum
 
-
-
+export default User

@@ -1,4 +1,4 @@
-.App {
+/* .App {
     text-align: center;
     font-family: Arial, sans-serif;
     max-width: 600px;
@@ -10,7 +10,7 @@
     width: 70%;
     padding: 10px;
     margin-right: 10px;
-  }
+  } */
   
   button {
     /* padding: 10px 20px; */
@@ -21,7 +21,7 @@
     border: none;
     cursor: pointer;
   }
-  
+/*   
   ul {
     list-style-type: none;
     padding: 0;
@@ -37,4 +37,4 @@
   
   li button {
     background-color: #dc3545;
-  }
+  } */

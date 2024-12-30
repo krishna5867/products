@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
-// import { Auth } from './AuthContext';
+import React, { useContext, useState } from 'react'
+import { Auth } from './context/AuthContext';
 import { useDispatch } from 'react-redux';
-import { login } from './AuthSlice';
+import { login } from './store/AuthSlice';
 
 const Form = () => {
+    const { setUserData} = useContext(Auth);
+
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         name: '',
@@ -62,6 +64,10 @@ const Form = () => {
             email: formData.email,
             password: formData.password
         }));
+        setUserData({
+            name: formData.name,
+            email: formData.email,
+        })
     }
     return (
         <div>
