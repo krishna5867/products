@@ -37,8 +37,8 @@ function App() {
         <div className='text-xl font-bold'>Krishna</div>
         <button onClick={showCartModal} className='cursor-pointer'>Cart ({items.length})</button>
       </div>
-      {showCart && (
-        <div className='absolute top-14 right-10  shadow-md z-[50] py-4 bg-white rounded-md h-96 overflow-scroll overflow-x-auto'>
+      {showCart && items.length > 0 &&(
+        <div className='absolute top-14 right-10  shadow-md z-[50] py-4 bg-white rounded-md max-h-96 overflow-scroll overflow-x-auto'>
           {items.map((item) => (
             <>
               <div className='flex flex-col gap-4'>
@@ -51,9 +51,9 @@ function App() {
                     </div>
                     <div className='flex justify-between'>
                       <div>
-                        <button onClick={() => dispatch(decrementQuantity(item))}>-</button>
+                        <button onClick={() => dispatch(decrementQuantity(item))} className='cursor-pointer'>-</button>
                         <span className='mx-4'>{item.quantity || 1}</span>
-                        <button onClick={() => dispatch(incrementQuantity(item))}>+</button>
+                        <button onClick={() => dispatch(incrementQuantity(item))} className='cursor-pointer'>+</button>
                       </div>
                       <div className='font-bold text-xl'>
                         ${item.quantity * item.price.toFixed(2) || item.price.toFixed(2)}
@@ -64,10 +64,10 @@ function App() {
               </div>
             </>
           ))
-        }
-        <div className='text-xl font-bold text-end pr-4 mt-4 border-t border-black'>
-        Total : ${items.reduce((acc, curr) => acc + curr.quantity * curr.price, 0).toFixed(2)}
-        </div>
+          }
+            <div className='text-xl font-bold text-end pr-4 mt-4 border-t border-black'>
+              Total : ${items.reduce((acc, curr) => acc + curr.quantity * curr.price, 0).toFixed(2)}
+            </div>
         </div>
       )}
       {user && user.name}
