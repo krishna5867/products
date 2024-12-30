@@ -46,7 +46,7 @@ function App() {
                   <img src={item.image} alt="product" className='h-20' />
                   <div className='w-full'>
                     <div className='flex justify-between'>
-                      <h2 className='p-2 font-semibold'>{item.title}</h2>
+                      <h2 className='p-2 font-semibold'>{item.title.substring(0,40)}...</h2>
                       <span className='p-2 shadow-md w-10 h-10 rounded-full flex justify-center items-center' onClick={() => handleRemove(item)}>X</span>
                     </div>
                     <div className='flex justify-between'>
