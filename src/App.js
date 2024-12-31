@@ -5,6 +5,7 @@ import { Auth } from './component/context/AuthContext';
 import Form from './component/Form';
 import Products from './component/Products';
 import UserFromUseFetch from "./component/User"
+import Carousel from './component/Carousel';
 
 function App() {
   const { userData } = useContext(Auth);
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <>
+    <Carousel />
       {userData && (
         <>
           <h2>From Context Api</h2>
